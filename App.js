@@ -10,10 +10,11 @@ import React from 'react';
 import {StyleSheet } from 'react-native';
 import HomePage from './Screen/Components/HomePage';
 import Login from './Screen/Components/Login';
+import Register from './Screen/Components/Register';
 
 function App(){
   return(
-       <Login/>
+       <Register/>
   );
 }
 

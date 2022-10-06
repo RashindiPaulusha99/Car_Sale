@@ -5,7 +5,7 @@ import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,L
 export default function Login() {
   return (
     <NativeBaseProvider>
-       <Center w="100%">
+       <Center w="100%"  color="gray.500" style={styles.box}>
           <Box safeArea p="2" py="8" w="90%" maxW="290" >
             <Heading size="lg" fontWeight="700" color="coolGray.800" _dark={{color: "warmGray.50"}}>
               Welcome
@@ -52,4 +52,12 @@ const styles = StyleSheet.create({
     top:30,
     paddingTop:70,
   },
+  box:{
+    position:'relative',
+    borderBottomEndRadius:50,
+    borderBottomLeftRadius:50,
+    borderBottomStartRadius:50,
+    borderBottomRightRadius:50
+  },
+  
 })

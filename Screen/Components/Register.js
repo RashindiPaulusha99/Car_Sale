@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import {StyleSheet } from 'react-native'
 import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Link,Center} from "native-base";
 
 
 export default function Register() {
   return (
     <NativeBaseProvider>
-      <Center w="100%">
+      <Center w="100%" bg="primary.400" style={styles.box}>
         <Box safeArea p="2" w="90%" maxW="290" py="8">
           <Heading size="lg" color="coolGray.800" _dark={{color: "warmGray.50"}} fontWeight="semibold">
             Welcome
@@ -41,3 +41,13 @@ export default function Register() {
     
   )
 }
+
+const styles = StyleSheet.create({
+  box:{
+    position:'relative',
+    borderBottomEndRadius:50,
+    borderBottomLeftRadius:50,
+    borderBottomStartRadius:50,
+    borderBottomRightRadius:50
+  },
+})
