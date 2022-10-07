@@ -14,7 +14,7 @@ import Register from './Screen/Components/Register';
 
 function App(){
   return(
-       <HomePage/>
+       <Login/>
   );
 }
 

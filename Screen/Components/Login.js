@@ -6,8 +6,8 @@ export default function Login() {
   return (
     <NativeBaseProvider>
        <Center w="100%" bg="primary.400" style={styles.box1}>
-          <Box safeArea p="2" py="8" w="90%" maxW="290" >
-            <Heading size="lg" fontWeight="700" color="coolGray.800" _dark={{color: "warmGray.50"}} fontSize="50">
+          <Box safeArea p="2" py="8" w="90%" maxW="290" height='500'>
+            <Heading paddingTop='10' size="lg" fontWeight="700" color="coolGray.800" _dark={{color: "warmGray.50"}} fontSize="50">
               LOGIN
             </Heading>
             <Heading mt="1" _dark={{color: "warmGray.200"}} color="coolGray.600" fontWeight="medium" size="xs">
@@ -15,14 +15,14 @@ export default function Login() {
             </Heading>
 
             <VStack space={3} mt="5">
-              <FormControl>
+              <FormControl paddingTop='5'>
                 <FormControl.Label>Username</FormControl.Label>
                 <Input />
               </FormControl>
-              <FormControl>
+              <FormControl paddingTop='5'>
                 <FormControl.Label>Password</FormControl.Label>
                 <Input type="password" />
-                <Link _text={{fontSize: "xs",fontWeight: "500",color: "indigo.500"}} alignSelf="flex-end" mt="1">
+                <Link paddingTop='5' _text={{fontSize: "xs",fontWeight: "500",color: "indigo.500"}} alignSelf="flex-end" mt="1">
                   Forget Password?
                 </Link>
               </FormControl>
@@ -67,12 +67,13 @@ const styles = StyleSheet.create({
     height:50,
     fontSize:10,
     position:'relative',
-    top:110,
-    left:60
+    top:35,
+    left:60,
+    
   },
   new_user:{
     position:'relative',
-    top:130,
+    top:70,
   }
   
 })

@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
       paddingTop:70,
       zIndex:1,
       color:'white', 
+      paddingBottom:10
     },
     heading2:{
       fontSize:15,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
       width:200,
       borderRadius:80,
       zIndex:5,
-      bottom:70,
+      bottom:80,
       backgroundColor:'#12CBC4',
       fontSize:30
     },
