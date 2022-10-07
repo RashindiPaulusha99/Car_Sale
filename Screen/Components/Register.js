@@ -1,9 +1,34 @@
-import React from 'react'
-import {StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import {StyleSheet,Alert } from 'react-native'
 import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Link,Center} from "native-base";
 
-
 export default function Register() {
+
+  const[fullname,setFullName]=useState("");
+  const[username,setUserName]=useState("");
+  const[password,setPassword]=useState("");
+
+  const saveData=()=>{
+    if(fullname=="" || username=="" || password==""){
+      Alert.alert("All Fields Are Required !")
+    }else{
+      fetch('http://localhost:4000/posts',{
+        method:'POST',
+        body:JSON.stringify({
+            fullname:fullname,
+            username:username,
+            password:password
+        }),
+        headers:{
+            'Content-type':'Application/json; charset=UTF-8'
+        },
+    })
+    .then(response => {Alert.alert("Save Successfully")})
+    .catch((error) =>{Alert.alert("Error Accurated")} )
+    }
+    
+  }
+
   return (
     <NativeBaseProvider>
       <Center w="100%" bg="primary.400" style={styles.box}>
@@ -17,21 +42,21 @@ export default function Register() {
           <VStack space={3} mt="5">
             <FormControl>
               <FormControl.Label>Full Name</FormControl.Label>
-              <Input />
+              <Input value={fullname} onChangeText={(e)=>{setFullName(e)}}/>
             </FormControl>
             <FormControl>
               <FormControl.Label>Username</FormControl.Label>
-              <Input />
+              <Input value={username} onChangeText={(e)=>{setUserName(e)}}/>
             </FormControl>
             <FormControl>
               <FormControl.Label>Password</FormControl.Label>
-              <Input type="password" />
+              <Input type="password" value={password} onChangeText={(e)=>{setPassword(e)}}/>
             </FormControl>
             <FormControl>
               <FormControl.Label>Confirm Password</FormControl.Label>
               <Input type="password" />
             </FormControl>
-            <Button mt="2" colorScheme="indigo" style={styles.button}>
+            <Button mt="2" colorScheme="indigo" style={styles.button} onPress={()=>saveData()}>
               Sign up
             </Button>
           </VStack>

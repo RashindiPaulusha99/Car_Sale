@@ -3,6 +3,9 @@ import { Text,StyleSheet } from 'react-native';
 import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Link,Center} from "native-base";
 
 export default function Login() {
+
+  
+
   return (
     <NativeBaseProvider>
        <Center w="100%" bg="primary.400" style={styles.box1}>
