@@ -5,10 +5,10 @@ import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,L
 export default function Login() {
   return (
     <NativeBaseProvider>
-       <Center w="100%"  color="gray.500" style={styles.box}>
+       <Center w="100%" bg="primary.400" style={styles.box1}>
           <Box safeArea p="2" py="8" w="90%" maxW="290" >
-            <Heading size="lg" fontWeight="700" color="coolGray.800" _dark={{color: "warmGray.50"}}>
-              Welcome
+            <Heading size="lg" fontWeight="700" color="coolGray.800" _dark={{color: "warmGray.50"}} fontSize="50">
+              LOGIN
             </Heading>
             <Heading mt="1" _dark={{color: "warmGray.200"}} color="coolGray.600" fontWeight="medium" size="xs">
               Sign in to continue!
@@ -26,14 +26,14 @@ export default function Login() {
                   Forget Password?
                 </Link>
               </FormControl>
-              <Button mt="2" colorScheme="indigo">
+              <Button mt="2" colorScheme="indigo" style={styles.button}>
                 Sign in
               </Button>
-              <HStack mt="6" justifyContent="center">
-                <Text fontSize="sm" color="coolGray.600" _dark={{color: "warmGray.200"}}>
-                  I'm a new user.{" "}
+              <HStack mt="6" justifyContent="center" style={styles.new_user}>
+                <Text fontSize="md" color="coolGray.600" _dark={{color: "warmGray.200"}}>
+                  Don't have an account.{"    "}
                 </Text>
-                <Link _text={{color: "indigo.500",fontWeight: "medium",fontSize: "sm"}} href="#">
+                <Link _text={{color: "indigo.500",fontWeight: "medium",fontSize: "md"}} href="#" >
                   Sign Up
                 </Link>
               </HStack>
@@ -52,12 +52,27 @@ const styles = StyleSheet.create({
     top:30,
     paddingTop:70,
   },
-  box:{
+  box1:{
     position:'relative',
     borderBottomEndRadius:50,
     borderBottomLeftRadius:50,
     borderBottomStartRadius:50,
     borderBottomRightRadius:50
   },
+  button:{
+    borderRadius:80,
+    width:150,
+    alignItems:'center',
+    justifyContent:'center',
+    height:50,
+    fontSize:10,
+    position:'relative',
+    top:110,
+    left:60
+  },
+  new_user:{
+    position:'relative',
+    top:130,
+  }
   
 })
