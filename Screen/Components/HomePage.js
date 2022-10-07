@@ -15,7 +15,7 @@ export default function HomePage() {
               </Stack>
               <Image shadow={2} source={{
                   uri: 'https://wallpaperaccess.com/full/317501.jpg'
-                 }} alt="Alternate Text" size="500"/>     
+                 }} alt="Alternate Text" size="400" style={styles.bg_image}/>     
        </VStack>
        
 
@@ -30,9 +30,18 @@ const styles = StyleSheet.create({
       position:'relative',
       top:30,
       paddingTop:70,
+      zIndex:1,
+      color:'white'
     },
     button:{
       width:150,
       borderRadius:80,
+      zIndex:1
+    },
+    bg_image:{
+      position:'absolute',
+      top:0,
+      height:700,
+      
     }
 })
