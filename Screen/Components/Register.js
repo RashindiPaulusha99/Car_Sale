@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {StyleSheet,Alert } from 'react-native'
 import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Image,Center} from "native-base";
 
-export default function Register() {
+export default function Register({navigation}) {
 
   const[fullname,setFullName]=useState("");
   const[username,setUserName]=useState("");
@@ -23,7 +23,7 @@ export default function Register() {
             'Content-type':'Application/json'
         },
     })
-    .then(response => {Alert.alert("Save Successfully")})
+    .then(response => {Alert.alert("Save Successfully"),navigation.navigator("Login") })
     .catch((error) =>{Alert.alert("Error Accurated")} )
     }
     
@@ -49,7 +49,7 @@ export default function Register() {
             <FormControl bg='rgba(0,0,0,0.6)' width='100%'>
               <Input placeholder='Password' color='white' marginBottom='3' marginLeft='3' marginRight='3' type="password" value={password} onChangeText={(e)=>{setPassword(e)}} variant="underlined"/>
             </FormControl>
-            <Button mt="2" colorScheme="primary" style={styles.button} onPress={()=>saveData()}>
+            <Button mt="2" colorScheme="primary" style={styles.button} onPress={()=>saveData() }>
               Sign up
             </Button>
           </VStack>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     borderBottomStartRadius:50,
     borderBottomRightRadius:50,
     zIndex:2,
-    backgroundColor:'rgba(0,0,0,0.8)'
+    backgroundColor:'rgba(0,0,0,0.7)'
   },
   button:{
     borderRadius:80,

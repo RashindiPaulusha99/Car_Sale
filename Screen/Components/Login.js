@@ -28,15 +28,16 @@ export default function Login({navigation}) {
                   Forget Password?
                 </Link>
               </FormControl>
-              <Button mt="2" colorScheme="primary" style={styles.button}>
+              <Button mt="2" colorScheme="primary" style={styles.button} onPress={()=>{
+                  navigation.navigate("AddCar")
+                }}>
                 Sign in
               </Button>
               <HStack mt="6" justifyContent="center" style={styles.new_user}>
                 <Text fontSize="md" color='white'>
                   Don't have an account.{"    "}
                 </Text>
-                <Link  onPress={()=>{
-                  navigation.navigate("Register")}} >
+                <Link  onPress={()=>{navigation.navigate("Register")}} >
                   <Text mt="0" fontSize="md" fontWeight="medium" color="primary.500">
                     Sign Up
                   </Text>
