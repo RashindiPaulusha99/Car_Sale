@@ -1,6 +1,6 @@
 import React,{useState,useCallback} from 'react'
-import { View, Alert,TouchableOpacity,ScrollView,StyleSheet} from 'react-native'
-import {NativeBaseProvider,Center,Stack,Icon, Text,Input,VStack,Button,Flex,Pressable} from 'native-base'
+import {  Alert,StyleSheet} from 'react-native'
+import {NativeBaseProvider,Center,Image, Text,Input,VStack,Button,Flex} from 'native-base'
 
 import * as ImagePicker from 'react-native-image-picker';
 
@@ -9,12 +9,10 @@ import { ImagePickerAvatar } from './ImagePickerAvatar';
 
 export default function AddCar({navigation}) {
 
+  const[date,setDate] = useState("");
+  const[location,setLocation] = useState("");
   const[brand,setBrand] = useState("");
-  const[fuelType,setFuelType] = useState("");
-  const[seats,setSeats] = useState("");
-  const[transmissionType,setTransmissionType] = useState("");
   const[price,setPrice] = useState(0.0);
-  const[distance,setDistance] = useState(0);
 
   const [pickerResponse, setPickerResponse] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -45,12 +43,11 @@ export default function AddCar({navigation}) {
       fetch('http://localhost:4000/car',{
           method:'POST',
           body:JSON.stringify({
+              
+              date:date,
+              location:location,
               brand:brand,
-              fuelType:fuelType,
-              seats:seats,
-              transmissionType:transmissionType,
-              price:price,
-              distance:distance
+              price:price
           }),
           headers:{
               'Content-type':'Application/json; charset=UTF-8'
@@ -61,39 +58,31 @@ export default function AddCar({navigation}) {
   }
 
   return (
-    <NativeBaseProvider>
-        <Center w="100%" bg="primary.400">
-          <Text fontSize="40" bold mt="10%" ml="3%" color='white'>Add Car</Text>
+    <NativeBaseProvider >
+        <Center w="100%"  height='100%' style={styles.body}>
+        <Button onPress={() => saveData()}  style={styles.button1}>View All</Button>
 
-          <Center width='100%' height='50%' bg='red.200'>
-         
-          <ImagePickerAvatar uri={uri} onPress={() => setVisible(true)} />
-      <ImagePickerModal
-        isVisible={visible}
-        onClose={() => setVisible(false)}
-        onImageLibraryPress={onImageLibraryPress}
-        onCameraPress={onCameraPress}
-      />
+          <Center width='100%' height='30%'>
+            <ImagePickerAvatar uri={uri} onPress={() => setVisible(true)} />
+            <ImagePickerModal isVisible={visible} onClose={() => setVisible(false)} onImageLibraryPress={onImageLibraryPress} onCameraPress={onCameraPress}/>
           </Center>
 
-          <VStack space={4} alignItems="center" mt="10%">
-          <Flex direction="row" mb="2.5" mt="1.5" >
-            <Input value={brand} onChangeText={(e)=>{setBrand(e)}} size="md" mx="3" placeholder="Brand" w="40%" color='white' variant="underlined"/>
-            <Input value={fuelType} onChangeText={(e)=>{setFuelType(e)}} size="md" mx="3" placeholder="Fuel Type" w="40%" color='white' variant="underlined"/>
-          </Flex>
-          <Flex direction="row" mb="2.5" mt="1.5" >
-            <Input value={seats} onChangeText={(e)=>{setSeats(e)}} size="md" mx="3" placeholder="Seats" w="40%" color='white' variant="underlined"/>
-            <Input value={transmissionType} onChangeText={(e)=>{setTransmissionType(e)}} size="md" mx="3" placeholder="Transmission Type" w="40%" color='white' variant="underlined"/>
-          </Flex>    
-          <Flex direction="row" mb="2.5" mt="1.5" >
-            <Input value={price} onChangeText={(e)=>{setPrice(e)}} size="md" mx="3" placeholder="Price" w="40%" color='white' variant="underlined"/>
-            <Input value={distance} onChangeText={(e)=>{setDistance(e)}} size="md" mx="3" placeholder="Distance" w="40%" color='white'variant="underlined" />
-          </Flex>    
-          <Button onPress={() => saveData()} size="lg" colorScheme="secondary">Save Car</Button>
+          <VStack space={4} alignItems="center" mt="20%" style={styles.details} >
+            <Flex direction="row" mb="2" >
+              <Input value={date} onChangeText={(e)=>{setDate(e)}} size="md" mx="3" placeholder="Date" w="40%" color='white' variant="underlined"/>
+              <Input value={location} onChangeText={(e)=>{setLocation(e)}} size="md" mx="3" placeholder="Location" w="40%" color='white' variant="underlined"/>
+            </Flex>
+            <Flex direction="row" mb="2" >
+              <Input value={brand} onChangeText={(e)=>{setBrand(e)}} size="md" mx="3" placeholder="Brand" w="40%" color='white' variant="underlined"/>
+              <Input value={price} onChangeText={(e)=>{setPrice(e)}} size="md" mx="3" placeholder="Price" w="40%" color='white' variant="underlined"/>
+            </Flex>
           
+            <Button onPress={() => saveData()}  mt='2' style={styles.button}>Save Car</Button>
           
           </VStack>
+  
         </Center>
+    
     </NativeBaseProvider>
   )
 }
@@ -105,12 +94,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#00b894',
     marginBottom: 10,
+    borderRadius:80,
+    width:300
+  },
+  button1: {
+    backgroundColor: '#218c74',
+    marginBottom: 10,
+    borderRadius:10,
+    width:100,
+    marginLeft:250,
+    marginTop:-50
   },
   text: {
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
   },
+  details:{
+    backgroundColor:'white',
+    padding:10,
+    borderRadius:20
+  },
+  body:{
+    zIndex:1,
+    
+  }
 });

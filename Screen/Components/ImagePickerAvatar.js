@@ -13,8 +13,7 @@ import { images } from '../../assets';
 export function ImagePickerAvatar({ uri, onPress }) {
   return (
     <ImageBackground
-      style={styles.imageBackground}
-      source={images.whatsappBackground}>
+      style={styles.imageBackground}>
       <View style={styles.avatar}>
         <Image
           style={styles.avatarImage}
@@ -23,7 +22,7 @@ export function ImagePickerAvatar({ uri, onPress }) {
         <TouchableOpacity style={styles.addButton} onPress={onPress}>
           <Image style={styles.addButtonIcon} source={images.addButton} />
         </TouchableOpacity>
-        <Text style={styles.usernameText}>Gapur Kassym</Text>
+        <Text style={styles.usernameText}>Upload Image</Text>
       </View>
     </ImageBackground>
   );
@@ -35,33 +34,33 @@ const styles = StyleSheet.create({
   },
   avatar: {
     alignItems: 'center',
-    marginTop: '20%',
+    marginTop: '5%',
   },
   avatarImage: {
-    height: 200,
+    height: 150,
     width: 200,
     overflow: 'hidden',
     borderColor: '#ffffff',
-    borderWidth: 4,
-    
+    borderWidth: 3,
+    borderRadius:20
   },
   addButton: {
-    height: 54,
-    width: 54,
+    height: 50,
+    width: 50,
     backgroundColor: '#f2f2fC',
     borderRadius: 50,
     position: 'absolute',
     left: 160,
-    bottom: 40,
+    bottom: 20,
   },
   addButtonIcon: {
-    height: 54,
-    width: 54,
+    height: 50,
+    width: 50,
   },
   usernameText: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#ffffff',
-    marginTop: 12,
+    fontSize: 20,
+    fontWeight: '650',
+    color: 'white',
+    marginTop: 5,
   },
 });
