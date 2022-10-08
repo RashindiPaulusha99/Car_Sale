@@ -20,7 +20,7 @@ export default function Register() {
             password:password
         }),
         headers:{
-            'Content-type':'Application/json; charset=UTF-8'
+            'Content-type':'Application/json'
         },
     })
     .then(response => {Alert.alert("Save Successfully")})
@@ -31,10 +31,10 @@ export default function Register() {
 
   return (
     <NativeBaseProvider>
-      <Center w="100%" bg="primary.400" style={styles.box}>
+      <Center w="100%" bg="dark.100" style={styles.box}>
         <Box safeArea p="2" w="90%" maxW="290" py="8">
-          <Heading size="lg" color="coolGray.800" _dark={{color: "warmGray.50"}} fontWeight="semibold" fontSize="50" >
-            REGISTER
+          <Heading size="lg" color="white" fontWeight="semibold" fontSize="50" >
+            SIGN UP
           </Heading>
           <Heading mt="1" color="coolGray.600" _dark={{color: "warmGray.200"}} fontWeight="medium" size="xs" >
             Sign up to continue!

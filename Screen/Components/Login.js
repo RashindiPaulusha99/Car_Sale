@@ -2,9 +2,7 @@ import React from 'react'
 import { Text,StyleSheet } from 'react-native';
 import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Link,Center} from "native-base";
 
-export default function Login() {
-
-  
+export default function Login({navigation}) {
 
   return (
     <NativeBaseProvider>
@@ -36,7 +34,7 @@ export default function Login() {
                 <Text fontSize="md" color="coolGray.600" _dark={{color: "warmGray.200"}}>
                   Don't have an account.{"    "}
                 </Text>
-                <Link _text={{color: "indigo.500",fontWeight: "medium",fontSize: "md"}} href="#" >
+                <Link _text={{color: "indigo.500",fontWeight: "medium",fontSize: "md"}} href="Register" >
                   Sign Up
                 </Link>
               </HStack>

@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import { NativeBaseProvider,VStack,Heading,Button,Stack,Image, Divider, Center} from "native-base";
 
 
-export default function HomePage() {
+export default function HomePage({navigation}) {
   return (
     <NativeBaseProvider>
        <VStack space={5} alignItems="center" >
@@ -11,16 +11,16 @@ export default function HomePage() {
           <Divider zIndex='2' bg="emerald.500" width='300' thickness="2" mx="2" orientation="horizontal" />
           <Heading style={styles.heading2} >𝘉𝘦𝘴𝘵 𝘊𝘢𝘳 𝘚𝘦𝘭𝘭𝘪𝘯𝘨 𝘈𝘯𝘥 𝘉𝘶𝘺𝘪𝘯𝘨 𝘗𝘭𝘢𝘵𝘧𝘰𝘳𝘮</Heading>
               <Stack mb="2.5" mt="400" direction={{base: "row",md: "column"}} space={2} mx={{base: "auto",md: "0"}}>
-                <Button size="lg" style={styles.button} >Get Started</Button>
-                
+                <Button size="lg" style={styles.button} onPress={()=>{
+                  navigation.navigate("Login")
+                }}>Get Started</Button>
               </Stack>
               <Image shadow={2} source={{
                   uri: 'https://c0.wallpaperflare.com/preview/154/428/25/rolls-royce-spirit-of-ecstasy-car-phantom.jpg'
                  }} alt="Alternate Text" size="400" style={styles.bg_image}/> 
   
        </VStack>
-       
-
+      
     </NativeBaseProvider>
   
   )
