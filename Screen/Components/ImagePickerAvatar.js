@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderColor: '#ffffff',
     borderWidth: 3,
-    borderRadius:10,
+    borderTopRightRadius:40,
+    borderBottomLeftRadius:40,
     top:10
   },
   addButton: {

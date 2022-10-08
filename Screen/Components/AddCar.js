@@ -60,7 +60,7 @@ export default function AddCar({navigation}) {
   return (
     <NativeBaseProvider >
         <Center w="100%"  height='100%' style={styles.body}>
-        <Button onPress={() => saveData()}  style={styles.button1}>View All</Button>
+        <Button onPress={() => navigation.navigate("ViewCars")}  style={styles.button1}>View All</Button>
 
           <Center width='100%' height='30%'>
             <ImagePickerAvatar uri={uri} onPress={() => setVisible(true)} />
@@ -97,15 +97,17 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#00b894',
-    marginBottom: 10,
-    borderRadius:80,
+    marginBottom: 10, 
+    borderTopLeftRadius:70,
+    borderBottomRightRadius:70,
     width:150,
     top:10
   },
   button2: {
     backgroundColor: '#f0932b',
     marginBottom: 10,
-    borderRadius:80,
+    borderTopLeftRadius:70,
+    borderBottomRightRadius:70,
     width:150,
     marginLeft:10,
     top:10
@@ -113,7 +115,8 @@ const styles = StyleSheet.create({
   button1: {
     backgroundColor: '#218c74',
     top:15,
-    borderRadius:10,
+    borderTopLeftRadius:20,
+    borderBottomRightRadius:20,
     width:100,
     marginLeft:250,
   },
@@ -123,14 +126,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   details:{
-    backgroundColor:'white',
+    backgroundColor:'#1e272e',
     padding:10,
-    borderRadius:20,
-    top:-15,
-    height:320
+    borderTopEndRadius:60,
+    borderTopLeftRadius:60,
+    borderTopStartRadius:60,
+    borderTopRightRadius:60,
+    top:-5,
+    height:320,
+    width:380
   },
   body:{
     zIndex:1,
-    backgroundColor:'#dff9fb'
+    backgroundColor:'white'
   }
 });
