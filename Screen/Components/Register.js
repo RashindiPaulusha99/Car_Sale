@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {StyleSheet,Alert } from 'react-native'
-import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Link,Center} from "native-base";
+import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Image,Center} from "native-base";
 
 export default function Register() {
 
@@ -31,37 +31,33 @@ export default function Register() {
 
   return (
     <NativeBaseProvider>
-      <Center w="100%" bg="dark.100" style={styles.box}>
-        <Box safeArea p="2" w="90%" maxW="290" py="8">
+      <Center w="100%" style={styles.box}>
+        <Box safeArea p="2" w="90%" maxW="290" py="8" height='390'>
           <Heading size="lg" color="white" fontWeight="semibold" fontSize="50" >
             SIGN UP
           </Heading>
-          <Heading mt="1" color="coolGray.600" _dark={{color: "warmGray.200"}} fontWeight="medium" size="xs" >
+          <Heading mt="1" color='white' fontWeight="medium" size="xs" >
             Sign up to continue!
           </Heading>
           <VStack space={3} mt="5">
-            <FormControl>
-              <FormControl.Label>Full Name</FormControl.Label>
-              <Input value={fullname} onChangeText={(e)=>{setFullName(e)}}/>
+            <FormControl bg='rgba(0,0,0,0.6)' width='100%'>
+              <Input placeholder='Full Name' color='white' marginBottom='3' marginLeft='3' marginRight='3' value={fullname} onChangeText={(e)=>{setFullName(e)}} variant="underlined"/>
             </FormControl>
-            <FormControl>
-              <FormControl.Label>Username</FormControl.Label>
-              <Input value={username} onChangeText={(e)=>{setUserName(e)}}/>
+            <FormControl bg='rgba(0,0,0,0.6)' width='100%'>
+              <Input placeholder='Username' color='white' marginBottom='3' marginLeft='3' marginRight='3' value={username} onChangeText={(e)=>{setUserName(e)}} variant="underlined"/>
             </FormControl>
-            <FormControl>
-              <FormControl.Label>Password</FormControl.Label>
-              <Input type="password" value={password} onChangeText={(e)=>{setPassword(e)}}/>
+            <FormControl bg='rgba(0,0,0,0.6)' width='100%'>
+              <Input placeholder='Password' color='white' marginBottom='3' marginLeft='3' marginRight='3' type="password" value={password} onChangeText={(e)=>{setPassword(e)}} variant="underlined"/>
             </FormControl>
-            <FormControl>
-              <FormControl.Label>Confirm Password</FormControl.Label>
-              <Input type="password" />
-            </FormControl>
-            <Button mt="2" colorScheme="indigo" style={styles.button} onPress={()=>saveData()}>
+            <Button mt="2" colorScheme="primary" style={styles.button} onPress={()=>saveData()}>
               Sign up
             </Button>
           </VStack>
         </Box>
       </Center>
+      <Image shadow={2} source={{
+                  uri: 'https://img.futurecar.com/202205/20/l_628856ef95d07.jpg'
+                 }} alt="Alternate Text" size="400" style={styles.bg_image}/> 
     </NativeBaseProvider>
     
   )
@@ -73,7 +69,9 @@ const styles = StyleSheet.create({
     borderBottomEndRadius:50,
     borderBottomLeftRadius:50,
     borderBottomStartRadius:50,
-    borderBottomRightRadius:50
+    borderBottomRightRadius:50,
+    zIndex:2,
+    backgroundColor:'rgba(0,0,0,0.8)'
   },
   button:{
     borderRadius:80,
@@ -83,7 +81,12 @@ const styles = StyleSheet.create({
     height:50,
     fontSize:10,
     position:'relative',
-    top:55,
+    top:10,
     left:60
-  }
+  },
+  bg_image:{
+    position:'absolute',
+    top:0,
+    height:700, 
+  },
 })
