@@ -67,17 +67,19 @@ export default function AddCar({navigation}) {
             <ImagePickerModal isVisible={visible} onClose={() => setVisible(false)} onImageLibraryPress={onImageLibraryPress} onCameraPress={onCameraPress}/>
           </Center>
 
-          <VStack space={4} alignItems="center" mt="20%" style={styles.details} >
-            <Flex direction="row" mb="2" >
-              <Input value={date} onChangeText={(e)=>{setDate(e)}} size="md" mx="3" placeholder="Date" w="40%" color='white' variant="underlined"/>
-              <Input value={location} onChangeText={(e)=>{setLocation(e)}} size="md" mx="3" placeholder="Location" w="40%" color='white' variant="underlined"/>
-            </Flex>
-            <Flex direction="row" mb="2" >
-              <Input value={brand} onChangeText={(e)=>{setBrand(e)}} size="md" mx="3" placeholder="Brand" w="40%" color='white' variant="underlined"/>
-              <Input value={price} onChangeText={(e)=>{setPrice(e)}} size="md" mx="3" placeholder="Price" w="40%" color='white' variant="underlined"/>
-            </Flex>
+          <VStack space={4} alignItems="center" mt="25%" style={styles.details} >
+           
+              <Input value={date} onChangeText={(e)=>{setDate(e)}} size="md" placeholder="Date" w="80%" color='white' variant="underlined"/>
+              <Input value={location} onChangeText={(e)=>{setLocation(e)}} size="md" mx="3" placeholder="Location" w="80%" color='white' variant="underlined"/>
+              <Input value={brand} onChangeText={(e)=>{setBrand(e)}} size="md" mx="3" placeholder="Brand" w="80%" color='white' variant="underlined"/>
+              <Input value={price} onChangeText={(e)=>{setPrice(e)}} size="md" mx="3" placeholder="Price" w="80%" color='white' variant="underlined"/>
+            
           
-            <Button onPress={() => saveData()}  mt='2' style={styles.button}>Save Car</Button>
+            <Flex direction="row" mb="2" >
+              <Button onPress={() => saveData()}  mt='2' style={styles.button}>Save</Button>
+              <Button onPress={() => saveData()}  mt='2' style={styles.button2}>Clear</Button>
+            </Flex>
+            
           
           </VStack>
   
@@ -97,15 +99,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#00b894',
     marginBottom: 10,
     borderRadius:80,
-    width:300
+    width:150,
+    top:10
+  },
+  button2: {
+    backgroundColor: '#f0932b',
+    marginBottom: 10,
+    borderRadius:80,
+    width:150,
+    marginLeft:10,
+    top:10
   },
   button1: {
     backgroundColor: '#218c74',
-    marginBottom: 10,
+    top:15,
     borderRadius:10,
     width:100,
     marginLeft:250,
-    marginTop:-50
   },
   text: {
     color: 'white',
@@ -115,10 +125,12 @@ const styles = StyleSheet.create({
   details:{
     backgroundColor:'white',
     padding:10,
-    borderRadius:20
+    borderRadius:20,
+    top:-15,
+    height:320
   },
   body:{
     zIndex:1,
-    
+    backgroundColor:'#dff9fb'
   }
 });

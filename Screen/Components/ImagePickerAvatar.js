@@ -30,19 +30,25 @@ export function ImagePickerAvatar({ uri, onPress }) {
 
 const styles = StyleSheet.create({
   imageBackground: {
-    flex: 1,
+    top:45,
+    height:230,
+    backgroundColor:'white',
+    width:330,
+    paddingBottom:10,
+    borderRadius:20
   },
   avatar: {
     alignItems: 'center',
-    marginTop: '5%',
+    
   },
   avatarImage: {
-    height: 150,
-    width: 200,
+    height: 180,
+    width: 300,
     overflow: 'hidden',
     borderColor: '#ffffff',
     borderWidth: 3,
-    borderRadius:20
+    borderRadius:10,
+    top:10
   },
   addButton: {
     height: 50,
@@ -50,8 +56,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2fC',
     borderRadius: 50,
     position: 'absolute',
-    left: 160,
-    bottom: 20,
+    left: 280,
+    bottom: 30,
   },
   addButtonIcon: {
     height: 50,
@@ -60,7 +66,7 @@ const styles = StyleSheet.create({
   usernameText: {
     fontSize: 20,
     fontWeight: '650',
-    color: 'white',
-    marginTop: 5,
+    color: 'black',
+    marginTop: 20,
   },
 });
