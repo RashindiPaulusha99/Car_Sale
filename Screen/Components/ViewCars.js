@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text,TouchableOpacity ,FlatList,StyleSheet} from 'react-native'
-import {Image,NativeBaseProvider,Center,Flex,HStack,Stack,Heading,Box,AspectRatio,Pressable,Icon} from 'native-base'
+import { TouchableOpacity ,FlatList,StyleSheet} from 'react-native'
+import {Image,NativeBaseProvider,Center,Flex,HStack,Stack,Heading,Box,AspectRatio,Pressable,Text} from 'native-base'
 
-import { images } from '../../assets';
 
 export default function ViewCars({navigation}) {
   const[posts,setPosts] = useState([]);
@@ -20,7 +19,7 @@ export default function ViewCars({navigation}) {
     <NativeBaseProvider style={styles.container}>
       
       <Center style={styles.center}>
-      <Text style={styles.title}>Car Store</Text>
+      <Text style={styles.title}>Cars Store</Text>
       <FlatList style={styles.item} data={posts}
         renderItem={({item})=>
             <TouchableOpacity style={styles.touchableArea} onPress={()=>navigation.navigate("UpdateDeleteCar",{obj:item})}>
@@ -32,18 +31,20 @@ export default function ViewCars({navigation}) {
                       _light={{backgroundColor: "gray.50"}}>
                     <Box>
                       <AspectRatio w="100%" ratio={16 / 9}>
-                        <Image source={{uri: "https://media.istockphoto.com/photos/white-luxury-vehicle-picture-id167495506?k=20&m=167495506&s=612x612&w=0&h=aZqfFGQzRmE0HxxuGKRTmDor_756VJRFuneLuHCk2v4="}} alt="image" />
+                        <Image source={{uri: "https://www.mercedes-benz.ie/passengercars/mercedes-benz-cars/coupe/range-overview/_jcr_content/swipeableteaserbox/par/swipeableteaser_1902035350/asset.MQ6.12.20210702110103.jpeg"}} alt="image" />
                       </AspectRatio>
-                          <Center bg="violet.500" _dark={{bg: "violet.400" }}    
+                          <Center bg="#00b894"     
                             _text={{color: "warmGray.50",fontWeight: "700",fontSize: "xs"}} 
                               position="absolute" bottom="0" px="3" py="1.5">
-                            BUY
+                            OWNER CAR
                           </Center>
                     </Box>
                     <Stack p="4" space={3}>
                       <Stack space={2}>
                         <Heading size="md" ml="-1">Mercides Benz</Heading>
-                          <Text fontSize="xs" color="red" fontWeight="500" ml="-0.5" mt="-1">
+
+                          <Text fontSize="xs" _light={{color: "red.600"}} fontWeight="bold"  mt="-1" ml="-1">
+                          
                             $500
                           </Text>
                       </Stack>
@@ -53,7 +54,7 @@ export default function ViewCars({navigation}) {
                       </Text>
                       <HStack alignItems="center" space={4} justifyContent="space-between">
                         <HStack alignItems="center">
-                          <Text color="coolGray.600" _dark={{color: "warmGray.200"}} fontWeight="400">
+                          <Text _light={{color: "blue.500"}} fontWeight="bold">
                             Colombo
                           </Text>
                         </HStack>
@@ -73,38 +74,38 @@ export default function ViewCars({navigation}) {
       />
       </Center>
 
-      <Box flex={1} bg="white" safeAreaTop width="100%" maxW="400" height="10%" alignSelf="center" style={styles.footer}>
+      <Box flex={1} bg="#55efc4" safeAreaTop width="100%" maxW="400" height="10%" alignSelf="center" style={styles.footer}>
         
-        <HStack style={{backgroundColor:'blue'}} alignItems="center" safeAreaBottom shadow={6}>
-          <Pressable cursor="pointer" opacity={selected === 0 ? 1 : 0.5} py="3" flex={1} onPress={() => setSelected(0)}>
+        <HStack style={{backgroundColor:'#00b894'}} alignItems="center" safeAreaBottom shadow={6}>
+          <Pressable cursor="pointer" opacity={selected === 0 ? 1 : 0.5} py="3" flex={1} onPress={() => navigation.navigate("HomePage")}>
             <Center>
-              <Image style={styles.buttonIcon} source={images.camera} />
-              <Text color="white" fontSize="15">
+              
+              <Text color="white"  fontSize="15">
                 Home
               </Text>
             </Center>
           </Pressable>
-          <Pressable cursor="pointer" opacity={selected === 1 ? 1 : 0.5} py="2" flex={1} onPress={() => setSelected(1)}>
+          <Pressable cursor="pointer" opacity={selected === 1 ? 1 : 0.5} py="2" flex={1} onPress={() => navigation.navigate("ViewCar")}>
             <Center>
-              <Image style={styles.buttonIcon} source={images.camera} />
+              
               <Text color="white" fontSize="15">
-                Login
+                ViewCar
               </Text>
             </Center>
           </Pressable>
-          <Pressable cursor="pointer" opacity={selected === 2 ? 1 : 0.6} py="2" flex={1} onPress={() => setSelected(2)}>
+          <Pressable cursor="pointer" opacity={selected === 2 ? 1 : 0.6} py="2" flex={1} onPress={() => navigation.navigate("AddCar")}>
             <Center>
-              <Image style={styles.buttonIcon} source={images.camera} />
+              
               <Text color="white" fontSize="15">
                 AddCar
               </Text>
             </Center>
           </Pressable>
-          <Pressable cursor="pointer" opacity={selected === 3 ? 1 : 0.5} py="2" flex={1} onPress={() => setSelected(3)}>
+          <Pressable cursor="pointer" opacity={selected === 3 ? 1 : 0.5} py="2" flex={1} onPress={() => navigation.navigate("Login")}>
             <Center>
-              <Image style={styles.buttonIcon} source={images.camera} />
+              
               <Text color="white" fontSize="15">
-                ViewCar
+                Login
               </Text>
             </Center>
           </Pressable>
@@ -119,7 +120,7 @@ export default function ViewCars({navigation}) {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 0,
+      marginTop: 1,
     },
     center:{
       backgroundColor:'black',
@@ -135,6 +136,7 @@ const styles = StyleSheet.create({
       fontSize: 32,
       color:'white',
       alignContent:'center',
+      paddingTop:20
     },
     touchableArea:{
       borderWidth:1,
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     footer:{
       zIndex:2,
       position:'absolute',
-      bottom:10
+      bottom:-10
     },
     buttonIcon: {
       width: 30,
