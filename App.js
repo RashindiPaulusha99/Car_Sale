@@ -15,6 +15,7 @@ import HomePage from './Screen/Components/HomePage';
 import Login from './Screen/Components/Login';
 import Register from './Screen/Components/Register';
 
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -28,7 +29,7 @@ function App(){
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="AddCar" component={AddCar} />
         <Stack.Screen name="ViewCars" component={ViewCars} />
-
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

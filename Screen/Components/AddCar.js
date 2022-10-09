@@ -1,6 +1,8 @@
 import React,{useState,useCallback} from 'react'
 import {  Alert,StyleSheet} from 'react-native'
-import {NativeBaseProvider,Center,Image, Text,Input,VStack,Button,Flex} from 'native-base'
+import {NativeBaseProvider,Center,Image, Text,Input,VStack,Button,Flex,Icon,IconButton} from 'native-base'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Entypo } from "@expo/vector-icons";
 
 import * as ImagePicker from 'react-native-image-picker';
 
@@ -8,6 +10,8 @@ import { ImagePickerModal } from './ImagePickerModal';
 import { ImagePickerAvatar } from './ImagePickerAvatar';
 
 export default function AddCar({navigation}) {
+
+  const Tab = createBottomTabNavigator();
 
   const[date,setDate] = useState("");
   const[location,setLocation] = useState("");
@@ -67,7 +71,7 @@ export default function AddCar({navigation}) {
             <ImagePickerModal isVisible={visible} onClose={() => setVisible(false)} onImageLibraryPress={onImageLibraryPress} onCameraPress={onCameraPress}/>
           </Center>
 
-          <VStack space={4} alignItems="center" mt="25%" style={styles.details} >
+          <VStack space={4} alignItems="center" mt="25%">
            
               <Input value={date} onChangeText={(e)=>{setDate(e)}} size="md" placeholder="Date" w="80%" color='white' variant="underlined"/>
               <Input value={location} onChangeText={(e)=>{setLocation(e)}} size="md" mx="3" placeholder="Location" w="80%" color='white' variant="underlined"/>
@@ -77,12 +81,11 @@ export default function AddCar({navigation}) {
           
             <Flex direction="row" mb="2" >
               <Button onPress={() => saveData()}  mt='2' style={styles.button}>Save</Button>
-              <Button onPress={() => saveData()}  mt='2' style={styles.button2}>Clear</Button>
             </Flex>
             
           
           </VStack>
-  
+
         </Center>
     
     </NativeBaseProvider>
@@ -132,12 +135,21 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:60,
     borderTopStartRadius:60,
     borderTopRightRadius:60,
-    top:-5,
+    top:-10,
     height:320,
     width:380
   },
   body:{
     zIndex:1,
     backgroundColor:'white'
+  },
+  bottom_nav:{
+    backgroundColor:'#1e272e',
+    padding:10,
+    borderTopLeftRadius:30,
+    borderTopRightRadius:30,
+    top:-80,
+    height:60,
+    width:380
   }
 });

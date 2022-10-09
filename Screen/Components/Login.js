@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Icon } from 'react-native';
 import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Link,Center,Image,Text} from "native-base";
 
 
@@ -17,10 +17,10 @@ export default function Login({navigation}) {
             </Heading>
 
             <VStack space={3} mt="5">
-              <FormControl bg='rgba(0,0,0,0.6)' width='100%'>
+              <FormControl bg='rgba(0,0,0,0.6)' width='100%' >
                 <Input color='white' marginBottom='3' marginLeft='3' marginRight='3' size="sm" placeholder='Enter Username' variant="underlined" />
               </FormControl>
-              <FormControl bg='rgba(0,0,0,0.6)'>
+              <FormControl bg='rgba(0,0,0,0.6)'  >
                 <Input type="password" color='white' marginBottom='3' marginLeft='3' marginRight='3' size="sm" placeholder='Enter Password' variant="underlined"/>
               </FormControl>
               <FormControl>
@@ -91,5 +91,8 @@ const styles = StyleSheet.create({
     top:0,
     height:700, 
   },
-  
+  input:{
+    borderTopRightRadius:30,
+    borderBottomLeftRadius:30,
+  }
 })

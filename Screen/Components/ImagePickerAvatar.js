@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Image,
-  View,
-  ImageBackground,
-} from 'react-native';
+import {StyleSheet,Text,TouchableOpacity,Image,View,ImageBackground,} from 'react-native';
 
 import { images } from '../../assets';
 
@@ -32,10 +25,10 @@ const styles = StyleSheet.create({
   imageBackground: {
     top:45,
     height:230,
-    backgroundColor:'white',
-    width:330,
+    
+    width:350,
     paddingBottom:10,
-    borderRadius:20
+    
   },
   avatar: {
     alignItems: 'center',
@@ -43,13 +36,10 @@ const styles = StyleSheet.create({
   },
   avatarImage: {
     height: 180,
-    width: 300,
+    width: 350,
     overflow: 'hidden',
     borderColor: '#ffffff',
     borderWidth: 3,
-    borderTopRightRadius:40,
-    borderBottomLeftRadius:40,
-    top:10
   },
   addButton: {
     height: 50,
@@ -57,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2fC',
     borderRadius: 50,
     position: 'absolute',
-    left: 280,
+    left: 300,
     bottom: 30,
   },
   addButtonIcon: {
