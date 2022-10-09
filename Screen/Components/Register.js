@@ -12,7 +12,7 @@ export default function Register({navigation}) {
     if(fullname=="" || username=="" || password==""){
       Alert.alert("All Fields Are Required !")
     }else{
-      fetch('http://192.168.1.4/posts',{
+      fetch('http://192.168.1.4":4000/posts',{
         method:'POST',
         body:JSON.stringify({
             fullname:fullname,
@@ -23,7 +23,7 @@ export default function Register({navigation}) {
             'Content-type':'Application/json'
         },
     })
-    .then(response => {Alert.alert("Save Successfully"),navigation.navigator("Login") })
+    .then(response => {Alert.alert("Save Successfully") })
     .catch((error) =>{Alert.alert("Error Accurated")} )
     }
     

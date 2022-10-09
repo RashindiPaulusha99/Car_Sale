@@ -1,4 +1,4 @@
-import React,{useState,useCallback} from 'react'
+import React,{useEffect,useState,useCallback} from 'react'
 import {  Alert,StyleSheet,ImageBackground,TouchableOpacity,Image,View,Text} from 'react-native'
 import {NativeBaseProvider,Center,Input,VStack,Button,Flex} from 'native-base'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,7 +7,7 @@ import * as ImagePicker from 'react-native-image-picker';
 
 import { ImagePickerModal } from './ImagePickerModal';
 
-export default function UpdateDeleteCar({navigation }) {
+export default function UpdateDeleteCar({navigation,route }) {
 
   const Tab = createBottomTabNavigator();
 
@@ -15,6 +15,16 @@ export default function UpdateDeleteCar({navigation }) {
   const[location,setLocation] = useState("");
   const[brand,setBrand] = useState("");
   const[price,setPrice] = useState(0.0);
+  const[description,setDescription] = useState("");
+
+  useEffect(()=>{
+    console.log(route.params.obj);
+    setDate(route.params.obj.date)
+    setLocation(route.params.obj.location)
+    setBrand(route.params.obj.brand)
+    setPrice(route.params.obj.price+"")
+    setDescription(route.params.obj.description)
+})
 
   const [pickerResponse, setPickerResponse] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -39,16 +49,17 @@ export default function UpdateDeleteCar({navigation }) {
 
   const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
 
-  const saveData=()=>{
+  const updateData=()=>{
 
-      fetch('http://localhost:4000/car',{
-          method:'POST',
+      fetch('http://192.168.1.4/car',{
+          method:'PUT',
           body:JSON.stringify({
               
               date:date,
               location:location,
               brand:brand,
-              price:price
+              price:price,
+              description:description
           }),
           headers:{
               'Content-type':'Application/json; charset=UTF-8'
@@ -80,16 +91,16 @@ export default function UpdateDeleteCar({navigation }) {
             <ImagePickerModal isVisible={visible} onClose={() => setVisible(false)} onImageLibraryPress={onImageLibraryPress} onCameraPress={onCameraPress}/>
           </Center>
 
-          <VStack space={4} alignItems="center" mt="25%">
+          <VStack space={5} alignItems="center" mt="10%">
            
-              <Input value={date} onChangeText={(e)=>{setDate(e)}} size="md" placeholder="Date" w="80%" color='white' variant="underlined"/>
-              <Input value={location} onChangeText={(e)=>{setLocation(e)}} size="md" mx="3" placeholder="Location" w="80%" color='white' variant="underlined"/>
-              <Input value={brand} onChangeText={(e)=>{setBrand(e)}} size="md" mx="3" placeholder="Brand" w="80%" color='white' variant="underlined"/>
-              <Input value={price} onChangeText={(e)=>{setPrice(e)}} size="md" mx="3" placeholder="Price" w="80%" color='white' variant="underlined"/>
-            
+              <Input value={brand} onChangeText={(e)=>{setBrand(e)}} size="md" mx="3" placeholder="Brand" w="80%" color='black' variant="underlined"/>
+              <Input value={date} onChangeText={(e)=>{setDate(e)}} size="md" placeholder="Date" w="80%" color='black' variant="underlined"/>
+              <Input value={location} onChangeText={(e)=>{setLocation(e)}} size="md" mx="3" placeholder="Location" w="80%" color='black' variant="underlined"/>
+              <Input value={price} onChangeText={(e)=>{setPrice(e)}} size="md" mx="3" placeholder="Price" w="80%" color='black' variant="underlined"/>
+              <Input value={description} onChangeText={(e)=>{setDescription(e)}} size="md" mx="3" placeholder="Description" w="80%" color='black' variant="underlined"/>
           
             <Flex direction="row" mb="2" >
-              <Button onPress={() => saveData()}  mt='2' style={styles.button}>Save</Button>
+              <Button onPress={() => updateData()}  mt='2' style={styles.button}>Update</Button>
             </Flex>
             
           
@@ -110,9 +121,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#00b894',
     marginBottom: 10, 
-   
     width:300,
-    top:1
+    top:-5
   },
   button2: {
     backgroundColor: '#f0932b',
@@ -125,7 +135,7 @@ const styles = StyleSheet.create({
   },
   button1: {
     backgroundColor: '#218c74',
-    top:15,
+    top:20,
     width:100,
     
   },
@@ -155,7 +165,7 @@ const styles = StyleSheet.create({
     width:380
   },
   imageBackground: {
-    top:45,
+    top:40,
     height:230,
     width:350,
     paddingBottom:10,
