@@ -1,15 +1,14 @@
 import React,{useState,useCallback} from 'react'
-import {  Alert,StyleSheet} from 'react-native'
-import {NativeBaseProvider,Center,Image, Text,Input,VStack,Button,Flex,Icon,IconButton} from 'native-base'
+import {  Alert,StyleSheet,ImageBackground,TouchableOpacity,Image,View,Text} from 'react-native'
+import {NativeBaseProvider,Center,Input,VStack,Button,Flex} from 'native-base'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Entypo } from "@expo/vector-icons";
-
+import { images } from '../../assets';
 import * as ImagePicker from 'react-native-image-picker';
 
 import { ImagePickerModal } from './ImagePickerModal';
-import { ImagePickerAvatar } from './ImagePickerAvatar';
 
-export default function AddCar({navigation}) {
+
+export default function AddCar({navigation }) {
 
   const Tab = createBottomTabNavigator();
 
@@ -41,7 +40,6 @@ export default function AddCar({navigation}) {
 
   const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
 
-
   const saveData=()=>{
 
       fetch('http://localhost:4000/car',{
@@ -67,7 +65,19 @@ export default function AddCar({navigation}) {
         <Button onPress={() => navigation.navigate("ViewCars")}  style={styles.button1}>View All</Button>
 
           <Center width='100%' height='30%'>
-            <ImagePickerAvatar uri={uri} onPress={() => setVisible(true)} />
+            
+            <ImageBackground
+              style={styles.imageBackground}>
+              <View style={styles.avatar}>
+                <Image
+                  style={styles.avatarImage}
+                  source={uri ? { uri } : images.avatar}
+                />
+                <TouchableOpacity style={styles.addButton} onPress={() => setVisible(true)}>
+                  <Image style={styles.addButtonIcon} source={images.addButton} />
+                </TouchableOpacity>
+              </View>
+            </ImageBackground>
             <ImagePickerModal isVisible={visible} onClose={() => setVisible(false)} onImageLibraryPress={onImageLibraryPress} onCameraPress={onCameraPress}/>
           </Center>
 
@@ -101,10 +111,9 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#00b894',
     marginBottom: 10, 
-    borderTopLeftRadius:70,
-    borderBottomRightRadius:70,
-    width:150,
-    top:10
+   
+    width:300,
+    top:1
   },
   button2: {
     backgroundColor: '#f0932b',
@@ -118,10 +127,8 @@ const styles = StyleSheet.create({
   button1: {
     backgroundColor: '#218c74',
     top:15,
-    borderTopLeftRadius:20,
-    borderBottomRightRadius:20,
     width:100,
-    marginLeft:250,
+    
   },
   text: {
     color: 'white',
@@ -131,11 +138,7 @@ const styles = StyleSheet.create({
   details:{
     backgroundColor:'#1e272e',
     padding:10,
-    borderTopEndRadius:60,
-    borderTopLeftRadius:60,
-    borderTopStartRadius:60,
-    borderTopRightRadius:60,
-    top:-10,
+    top:-20,
     height:320,
     width:380
   },
@@ -151,5 +154,43 @@ const styles = StyleSheet.create({
     top:-80,
     height:60,
     width:380
-  }
+  },
+  imageBackground: {
+    top:45,
+    height:230,
+    width:350,
+    paddingBottom:10,
+    
+  },
+  avatar: {
+    alignItems: 'center',
+    
+  },
+  avatarImage: {
+    height: 180,
+    width: 350,
+    overflow: 'hidden',
+    borderColor: 'white',
+    borderWidth: 3,
+    top:15
+  },
+  addButton: {
+    height: 50,
+    width: 50,
+    backgroundColor: '#f2f2fC',
+    borderRadius: 50,
+    position: 'absolute',
+    left: 300,
+    bottom: -30,
+  },
+  addButtonIcon: {
+    height: 50,
+    width: 50,
+  },
+  usernameText: {
+    fontSize: 20,
+    fontWeight: '650',
+    color: 'black',
+    marginTop: 20,
+  },
 });

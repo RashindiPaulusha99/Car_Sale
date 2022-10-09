@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {StyleSheet,Alert } from 'react-native'
-import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,HStack,Input,Image,Center} from "native-base";
+import { NativeBaseProvider,Box,VStack,Heading,Button,FormControl,Text,Input,Image,Center,Link} from "native-base";
 
 export default function Register({navigation}) {
 
@@ -12,7 +12,7 @@ export default function Register({navigation}) {
     if(fullname=="" || username=="" || password==""){
       Alert.alert("All Fields Are Required !")
     }else{
-      fetch('http://localhost:4000/posts',{
+      fetch('http://192.168.1.4/posts',{
         method:'POST',
         body:JSON.stringify({
             fullname:fullname,
@@ -52,6 +52,14 @@ export default function Register({navigation}) {
             <Button mt="2" colorScheme="primary" style={styles.button} onPress={()=>saveData() }>
               Sign up
             </Button>
+            <Text fontSize="md" color='white' style={styles.old_user}>
+                  Already have an account.{"    "}
+            </Text>
+            <Link  onPress={()=>{navigation.navigate("Login")}} style={styles.login}>
+                <Text mt="0" fontSize="md" fontWeight="medium" color="primary.500">
+                    Login
+                </Text>
+              </Link>
           </VStack>
         </Box>
       </Center>
@@ -89,4 +97,13 @@ const styles = StyleSheet.create({
     top:0,
     height:700, 
   },
+  old_user:{
+    position:'relative',
+    top:150,
+  },
+  login:{
+    position:'relative',
+    top:113,
+    left:200
+  }
 })

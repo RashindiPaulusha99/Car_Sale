@@ -4,12 +4,7 @@ import Modal from 'react-native-modal';
 
 import { images } from '../../assets';
 
-export function ImagePickerModal({
-  isVisible,
-  onClose,
-  onImageLibraryPress,
-  onCameraPress,
-}) {
+export function ImagePickerModal({isVisible,onClose,onImageLibraryPress,onCameraPress}) {
   return (
     <Modal
       isVisible={isVisible}
